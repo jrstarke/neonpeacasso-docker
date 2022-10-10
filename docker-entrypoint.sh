@@ -16,7 +16,7 @@ if [ ! -f "/models/${MODEL_FILENAME}" ]; then
   ${STABLE_DIFFUSION_MODEL_URL}
 fi
 
-echo "/models/${MODEL_FILENAME}" >> /venv/lib/python${PYTHON_VERSION}/site-packages/neonpeacasso/ckpt_path.txt
+printf "/models/${MODEL_FILENAME}" > /venv/lib/python${PYTHON_MINOR_VERSION}/site-packages/neonpeacasso/ckpt_path.txt
 . /venv/bin/activate
 
 exec "$@"
