@@ -8,7 +8,7 @@ if [ -z "${HF_API_TOKEN}" ]; then
 fi
 
 MODEL_FILENAME=$(echo ${STABLE_DIFFUSION_MODEL_URL} | sed -r 's#.*/##g')
-if [ ! -f "${MODEL_FILENAME}" ]; then
+if [ ! -f "/models/${MODEL_FILENAME}" ]; then
   echo "Downloading the Stable Diffusion Model: ${STABLE_DIFFUSION_MODEL_URL}"
   curl \
   -H "Authorization: Bearer ${HF_API_TOKEN}" \
