@@ -1,4 +1,6 @@
-FROM python:3.10-bullseye
+ARG PYTHON_VERSION=3.10
+
+FROM python:${PYTHON_VERSION}-bullseye
 
 ARG TAMING_TRANSFORMERS_VERSION=20220113 \
 ARG NEONPEACASSO_VERISON=20220915
@@ -9,7 +11,8 @@ ENV STABLE_DIFFUSION_MODEL_URL="https://huggingface.co/CompVis/stable-diffusion-
 RUN python -m venv venv \
     && . venv/bin/activate \
     && pip install -e "git+https://github.com/jrstarke/taming-transformers.git@${TAMING_TRANSFORMERS_VERSION}#egg=taming-transformers" \
-    && pip install "git+https://github.com/jrstarke/neonpeacasso.git@${NEONPEACASSO_VERISON}"
+    && pip install "git+https://github.com/jrstarke/neonpeacasso.git@${NEONPEACASSO_VERISON}" \
+    && mkdir /models
 
 ADD docker-entrypoint.sh /usr/bin/
 

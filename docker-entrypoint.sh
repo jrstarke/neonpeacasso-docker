@@ -12,10 +12,10 @@ if [ ! -f "${MODEL_FILENAME}" ]; then
   echo "Downloading the Stable Diffusion Model: ${STABLE_DIFFUSION_MODEL_URL}"
   curl \
   -H "Authorization: Bearer ${HF_API_TOKEN}" \
-  -L -O \
+  -L -o /models/${MODEL_FILENAME} \
   ${STABLE_DIFFUSION_MODEL_URL}
 fi
 
-rm model.ckpt; ln -s ${MODEL_FILENAME} model.ckpt
+echo "/models/${MODEL_FILENAME}" >> /venv/lib/python${PYTHON_VERSION}/site-packages/neonpeacasso/ckpt_path.txt
 
 exec "$@"
