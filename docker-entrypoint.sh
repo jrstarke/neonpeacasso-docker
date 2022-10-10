@@ -17,6 +17,6 @@ if [ ! -f "/models/${MODEL_FILENAME}" ]; then
 fi
 
 echo "/models/${MODEL_FILENAME}" >> /venv/lib/python${PYTHON_VERSION}/site-packages/neonpeacasso/ckpt_path.txt
-source /venv/bin/activate
+. /venv/bin/activate
 
 exec "$@"
