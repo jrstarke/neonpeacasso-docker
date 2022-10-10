@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ -z "${HF_API_TOKEN}" ]; then
   echo "The HF_API_TOKEN was not set. This can be created"
@@ -17,6 +17,6 @@ if [ ! -f "/models/${MODEL_FILENAME}" ]; then
 fi
 
 printf "/models/${MODEL_FILENAME}" > /venv/lib/python${PYTHON_MINOR_VERSION}/site-packages/neonpeacasso/ckpt_path.txt
-. /venv/bin/activate
+source /venv/bin/activate
 
 exec "$@"
